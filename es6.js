@@ -121,7 +121,6 @@ let traumatologia = [
     rut: "14345656-6",
     prevision: "FONASA",
   },
-  
 ];
 
 let dental = [
@@ -169,8 +168,9 @@ let dental = [
   },
 ];
 
-
-document.write(`<h3><b><-- ELIMINAR PRIMER Y ULTIMO REGISTRO DE RADIOLOGÍA --></b></h3>`);
+document.write(
+  `<h3><b><-- ELIMINAR PRIMER Y ULTIMO REGISTRO DE RADIOLOGÍA --></b></h3>`
+);
 document.write(`<p>ANTES DE ELIMINAR: ${radiologia.length}</p>`);
 radiologia.shift();
 radiologia.pop();
@@ -179,44 +179,38 @@ document.write(`<p>DESPUÉS DE ELIMINAR: ${radiologia.length}</p>`);
 document.write(`<br><br>`);
 document.write(`<h3><b><-- IMPRIMIR REGISTROS DENTAL --></b></h3>`);
 
-for (let i = 0; i < dental.length; i++) {
-     document.write(`${dental[i].hora} - ${dental[i].especialista} - ${dental[i].paciente} - ${dental[i].rut} - ${dental[i].prevision} <br>`);
-}
+dental.forEach((element) => {
+  document.write(
+    `${element.hora} - ${element.especialista} - ${element.paciente} - ${element.rut} - ${element.prevision} <br>`
+  );
+});
 
 document.write(`<br><br>`);
-document.write(`<h3><b><-- IMPRIMIR REGISTROS TOTAL DE PACIENTES QUE SE ATENDIERON --></b></h3>`);
+document.write(
+  `<h3><b><-- IMPRIMIR REGISTROS TOTAL DE PACIENTES QUE SE ATENDIERON --></b></h3>`
+);
 
-for (let i = 0; i < radiologia.length; i++) {
-  document.write(`${radiologia[i].paciente}<br>`);
-}
-for (let i = 0; i < traumatologia.length; i++) {
-  document.write(`${traumatologia[i].paciente} <br>`);
-}
-for (let i = 0; i < dental.length; i++) {
-  document.write(`${dental[i].paciente}<br>`);
-}
+radiologia.forEach((element) => {
+  document.write(`${element.paciente}<br>`);
+});
+traumatologia.forEach((element) => {
+  document.write(`${element.paciente}<br>`);
+});
+dental.forEach((element) => {
+  document.write(`${element.paciente}<br>`);
+});
 
 document.write(`<br><br>`);
-document.write(`<h3><b><-- MODIFICAR PREVISIÓN DE PACIENTES DE DENTAL --></b></h3>`);
+document.write(
+  `<h3><b><-- MODIFICAR PREVISIÓN DE PACIENTES DE DENTAL --></b></h3>`
+);
 
-let fonasa = 'FONASA';
-let isapre = 'ISAPRE'
-for (let i = 0; i < dental.length; i++) {
-  if(dental[i].prevision == fonasa){
-    document.write(`${dental[i].paciente} - ${isapre} <br>`);
+let fonasa = "FONASA";
+let isapre = "ISAPRE";
+dental.forEach((element) => {
+  if (element.prevision == fonasa) {
+    document.write(`${element.paciente} - ${isapre} <br>`);
+  } else {
+    document.write(`${element.paciente} - ${fonasa} <br>`);
   }
-  else{
-    document.write(`${dental[i].paciente} - ${fonasa} <br>`);
-  }
-}
-
-
-// document.write(`<p>Dental: ${dental.length}</p>`);
-// document.write(`<br><br>`);
-
-// document.write(`<h3><b><-- PRIMERO Y ÚLTIMO --></b></h3>`);
-// document.write(`<p>Radiologia: ${radiologia[0].rut} - ${radiologia[0].prevision} | ${radiologia[radiologia.length -1].rut} - ${radiologia[radiologia.length -1].prevision}</p>`);
-// document.write(`<p>Traumatología: ${traumatologia[0].rut} - ${traumatologia[0].prevision} | ${traumatologia[traumatologia.length  -1].rut} - ${traumatologia[traumatologia.length -1].prevision}</p>`);
-// document.write(`<p>Dental: ${dental[0].rut} - ${dental[0].prevision} | ${dental[dental.length -1].rut} - ${dental[dental.length -1].prevision}</p>`);
-
-
+});
